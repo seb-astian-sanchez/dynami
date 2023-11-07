@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dynami</title>
+        <link href="style.css" rel="stylesheet">
+        <style>
+            body {
+                text-align: center;
+                font-family: Big Caslon;
+            }
+            #menus {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 250px;
+                overflow: auto;
+            }
+            h1 {
+            font-weight: 500;
+            margin-top: 50px;
+            margin-bottom: 0px;
+            font-size: 100px;
+              background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(92,9,121,1) 29%, rgba(0,234,255,1) 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            }
+                .floating-y {
+                position: relative;
+                background: linear-gradient(30deg, rgba(2,0,36,1) 0%, rgba(92,9,121,1) 29%, rgba(0,234,255,1) 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+                bottom: 6px;
+                transform: rotate(5deg);
+                transform-origin: bottom;
+                display: inline-block;
+            }
+            p#quote {
+                font-family: "Futura", sans-serif;
+            }
+            .button-35 {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: #fff;
+              border-radius: 12px;
+              box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
+              box-sizing: border-box;
+              color: #121212;
+              cursor: pointer;
+              font-family: courier;
+              font-size: 1.2rem;
+              font-weight: 300;
+              line-height: 1;
+              margin: 10px;
+              outline: none;
+              padding: .5rem .6rem;
+              text-align: center;
+              text-decoration: none;
+              transition: box-shadow .2s,-webkit-box-shadow .2s;
+              white-space: nowrap;
+              border: 0;
+              user-select: none;
+              -webkit-user-select: none;
+              touch-action: manipulation;
+            }
+            .button-35:hover {
+              box-shadow: #000033 0 0 0 3px, transparent 0 0 0 0;
+            }
+        </style>
+        <script type="text/javascript" src="/eel.js"></script>
+        <script type="text/javascript" src="main.js"></script>
+</head>
+<body>
+    <h1>
+    D<sub class="floating-y">y</sub>nami: track your lifts
+    </h1>
+    <div id="quote">j </div>
+    <div id = "menus">
+        <div id="routine">
+            <button class="button-35" onclick="selectRoutine('5x5')"> 5x5 </button>
+            <button class="button-35" onclick="selectRoutine('PPL')"> PPL </button>
+            <button class="button-35" onclick="selectRoutine('Split')"> Split </button>
+            <button class="button-35" onclick="selectRoutine('5/3/1')"> 5/3/1 </button>
+            <button class="button-35" onclick="selectRoutine('create')"> create </button>
+              <div id="5x5" style="display: none;">
+                <button class="button-35" onclick="selectCircuit('5x5a')"> A </button>
+                <button class="button-35" onclick="selectCircuit('5x5b')"> B </button>
+                <button class="button-35" onclick="selectCircuit('create')"> modify </button>
+                <button class="button-35" onclick="prev('5x5')"> Back </button>
+              </div>
+              <div id="PPL" style="display: none;">
+                <button class="button-35" onclick="selectCircuit('Push')"> Push </button>
+                <button class="button-35" onclick="selectCircuit('Pull')"> Pull </button>
+                <button class="button-35" onclick="selectCircuit('Legs')"> Legs </button>
+                <button class="button-35" onclick="selectCircuit('create')"> Modify </button>
+                <button class="button-35" onclick="prev('PPL')"> Back </button>
+              </div>
+              <div id="Split" style="display: none;">
+                <button class="button-35" onclick="selectCircuit('circuit1')">Circuit 1</button>
+                <button class="button-35" onclick="selectCircuit('circuit2')">Circuit 2</button>
+                <button class="button-35" onclick="selectCircuit('circuit3')">Circuit 3</button>
+                <button class="button-35" onclick="selectCircuit('circuit4')">Circuit 4</button>
+                <button class="button-35" onclick="selectCircuit('circuit5')">Circuit 5</button>
+                <button class="button-35" onclick="prev('Split')"> Back </button>
+              </div>
+              <div id="5/3/1" style="display: none;">
+                <button class="button-35" onclick="selectCircuit('circuit1')">Circuit 1</button>
+                <button class="button-35" onclick="selectCircuit('circuit2')">Circuit 2</button>
+                <button class="button-35" onclick="selectCircuit('circuit3')">Circuit 3</button>
+                <button class="button-35" onclick="selectCircuit('circuit4')">Circuit 4</button>
+                <button class="button-35" onclick="selectCircuit('circuit5')">Circuit 5</button>
+                <button class="button-35" onclick="prev('5/3/1')"> Back </button>
+              </div>
+              <div id="Yours" style="display: none;">
+                <button class="button-35" onclick="selectCircuit('circuit1')">Circuit 1</button>
+                <button class="button-35" onclick="selectCircuit('circuit2')">Circuit 2</button>
+                <button class="button-35" onclick="selectCircuit('circuit3')">Circuit 3</button>
+                <button class="button-35" onclick="selectCircuit('circuit4')">Circuit 4</button>
+                <button class="button-35" onclick="selectCircuit('circuit5')">Circuit 5</button>
+                <button class="button-35" onclick="prev('Yours')"> Back </button>
+              </div>
+        </div>
+        <div id="circuit">
+                <div id="inputValueContainer">
+                </div>
+                <div id="Pull" style="display: none;">
+                  <table>
+                    <tr>
+                      <td>Deadlift</td>
+                      <td><input type="text" id="DL"></td>
+                    </tr>
+                    <tr>
+                      <td>Row</td>
+                      <td><input type="text" id="Row"></td>
+                    </tr>
+                    <tr>
+                      <td>Lat Pull Down</td>
+                      <td><input type="text" id="LPD"></td>
+                    </tr>
+                    <tr>
+                      <td>Seated Cable Row</td>
+                      <td><input type="text" id="SCR"></td>
+                    </tr>
+                    <tr>
+                      <td>Face-pull</td>
+                      <td><input type="text" id="FP"></td>
+                    </tr>
+                    <tr>
+                      <td>Bicep Curl</td>
+                      <td><input type="text" id="BicepC"></td>
+                    </tr>
+                    <tr>
+                      <td>Hammer Curl</td>
+                      <td><input type="text" id="HammerC"></td>
+                    </tr>
+                  </table>
+                    <button class="button-35" onclick="prev('Pull')"> Back </button>
+                </div>
+                <div id="Push" style="display: none;">
+                  <table>
+                    <tr>
+                      <td>Bench</td>
+                      <td><input type="text" id="Bench"></td>
+                    </tr>
+                    <tr>
+                      <td>OHP</td>
+                      <td><input type="text" id="OHP"></td>
+                    </tr>
+                    <tr>
+                      <td>Incline Bench Press</td>
+                      <td><input type="text" id="InclineBP"></td>
+                    </tr>
+                    <tr>
+                      <td>Tricep Pushdown</td>
+                      <td><input type="text" id="TricepPD"></td>
+                    </tr>
+                    <tr>
+                      <td>Overhead Tricep Extension</td>
+                      <td><input type="text" id="OHTE"></td>
+                    </tr>
+                    <tr>
+                      <td>Lateral Raise</td>
+                      <td><input type="text" id="LateralR"></td>
+                    </tr>
+                  </table>
+                        <div id ="pushGraph">
+                        </div>
+                </div>
+                <div id="Legs" style="display: none;">
+                  <table>
+                    <tr>
+                      <td>Squat</td>
+                      <td><input type="text" id="Squat"></td>
+                    </tr>
+                    <tr>
+                      <td>Romanian Deadlift</td>
+                      <td><input type="text" id="RDL"></td>
+                    </tr>
+                    <tr>
+                      <td>Leg Press</td>
+                      <td><input type="text" id="LegPress"></td>
+                    </tr>
+                    <tr>
+                      <td>Calf Raise</td>
+                      <td><input type="text" id="CalfR"></td>
+                    </tr>
+                    <tr>
+                      <td>Leg Curl</td>
+                      <td><input type="text" id="LegC"></td>
+                    </tr>
+                  </table>
+                </div>
+        </div>
+    </div>
+</body>
+</html>
